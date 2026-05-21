@@ -6,9 +6,11 @@ import { CertificationsSection } from './sections/CertificationsSection';
 import { ContactSection } from './sections/ContactSection';
 import { EducationSection } from './sections/EducationSection';
 import { ProjectsSection } from './sections/ProjectsSection';
+import { SkillsSection } from './sections/SkillsSection';
 
 const sections = {
   about: AboutSection,
+  skills: SkillsSection,
   education: EducationSection,
   projects: ProjectsSection,
   certifications: CertificationsSection,

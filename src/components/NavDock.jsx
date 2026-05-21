@@ -5,12 +5,12 @@ import { MagneticButton } from './MagneticButton';
 export function NavDock({ activePanel, onSelect }) {
   return (
     <motion.nav
-      className="fixed inset-x-3 bottom-4 z-50 mx-auto max-w-3xl rounded-[1.65rem] border border-white/10 bg-graphite/60 p-2 shadow-[0_18px_70px_rgba(0,0,0,.45)] shadow-insetGlass backdrop-blur-2xl md:bottom-6"
+      className="fixed inset-x-3 bottom-4 z-50 mx-auto max-w-4xl rounded-[1.65rem] border border-white/10 bg-graphite/60 p-2 shadow-[0_18px_70px_rgba(0,0,0,.45)] shadow-insetGlass backdrop-blur-2xl md:bottom-6"
       initial={{ y: 90, opacity: 0, scale: 0.94 }}
       animate={{ y: 0, opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="grid grid-cols-5 gap-1.5">
+      <div className="grid grid-cols-6 gap-1.5">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = activePanel === item.id;

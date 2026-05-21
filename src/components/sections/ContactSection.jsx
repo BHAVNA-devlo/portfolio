@@ -12,7 +12,7 @@ const fields = [
 
 export function ContactSection() {
   return (
-    <SectionShell eyebrow="Open channel" title="A quiet, direct place to start the next build.">
+    <SectionShell title="Let's connect and create together.">
       <motion.div variants={stagger} className="grid gap-5 lg:grid-cols-[1fr_.82fr]">
         <motion.form variants={fadeUp} className="rounded-3xl border border-white/10 bg-white/[0.035] p-5 shadow-insetGlass">
           <div className="grid gap-4">
@@ -43,7 +43,7 @@ export function ContactSection() {
             whileTap={{ scale: 0.98 }}
             className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-mint/25 bg-mint/[0.12] px-5 py-4 font-display text-sm uppercase tracking-[0.24em] text-fog shadow-glow transition hover:bg-mint/[0.18]"
           >
-            <Send size={17} /> Send Signal
+            <Send size={17} /> Send Mail
           </motion.button>
         </motion.form>
         <motion.div variants={stagger} className="grid gap-3">

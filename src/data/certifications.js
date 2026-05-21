@@ -1,26 +1,20 @@
 export const certifications = [
   {
-    name: 'React Frontend Development',
-    issuer: 'Developer Academy',
+    name: 'AWS Certified AI Practitioner',
+    issuer: 'Amazon Web Services',
+    year: '2026',
+    credentialUrl: 'https://example.com',
+  },
+  {
+    name: 'Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate ',
+    issuer: 'Oracle',
     year: '2025',
     credentialUrl: 'https://example.com',
   },
   {
-    name: 'JavaScript Algorithms',
-    issuer: 'Code Institute',
-    year: '2024',
-    credentialUrl: 'https://example.com',
-  },
-  {
-    name: 'Responsive Web Design',
-    issuer: 'Web Standards Lab',
-    year: '2024',
-    credentialUrl: 'https://example.com',
-  },
-  {
-    name: 'UI Motion Fundamentals',
-    issuer: 'Interaction School',
-    year: '2025',
+    name: 'Palo Alto Networks Certified AI Security Associate',
+    issuer: 'Palo Alto Networks',
+    year: '2026',
     credentialUrl: 'https://example.com',
   },
 ];

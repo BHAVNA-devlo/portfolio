@@ -4,20 +4,20 @@ export const education = [
     title: 'B.Tech in Computer Science and Engineering',
     institution: 'KIET Group of Institutions',
     detail:
-      'Focused on data structures, web engineering, software design, and practical full-stack development.',
+  'Pursuing B.Tech in Computer Science and Engineering at KIET Group of Institutions, focusing on software development, data structures, web technologies, and modern application design.',
   },
   {
     period: '2021 - 2022',
     title: '12 standard (Science)',
-    institution: 'Self-led advanced learning',
+    institution: 'UP Board',
     detail:
-      'Built production-style React projects while studying UI systems, animation, responsive design, and performance.',
+      'Completed 12th standard with Science stream under UP Board, building a strong foundation in mathematics, logical thinking, and problem-solving skills.',
   },
   {
     period: '2020 - 2021',
     title: '10 standard (Science)',
-    institution: 'JavaScript, HTML, CSS',
+    institution: 'UP Board',
     detail:
-      'Developed core programming fundamentals through small apps, layout systems, and interactive web experiments.',
+  'Completed 10th standard while developing analytical thinking, problem-solving abilities, and a strong academic foundation.',
   },
 ];

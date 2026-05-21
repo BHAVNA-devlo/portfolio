@@ -20,7 +20,6 @@ body {
   background: #050506;
   color: #e6e1d7;
   font-family: Inter, system-ui, sans-serif;
-  cursor: none;
 }
 
 button,
@@ -28,11 +27,6 @@ a,
 input,
 textarea {
   font: inherit;
-}
-
-button,
-a {
-  cursor: none;
 }
 
 ::selection {
@@ -52,12 +46,4 @@ a {
 ::-webkit-scrollbar-thumb {
   background: rgba(243, 201, 105, 0.25);
   border-radius: 999px;
-}
-
-@media (max-width: 767px) {
-  body,
-  button,
-  a {
-    cursor: auto;
-  }
 }

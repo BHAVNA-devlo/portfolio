@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { AmbientBackground } from './components/AmbientBackground';
-import { CustomCursor } from './components/CustomCursor';
 import { Hero } from './components/Hero';
 import { LoadingScreen } from './components/LoadingScreen';
 import { NavDock } from './components/NavDock';
@@ -26,7 +25,6 @@ export default function App() {
     <>
       <AmbientBackground />
       <LoadingScreen isLoading={isLoading} />
-      <CustomCursor />
       <Hero />
       <PopupPanel activePanel={activePanel} onClose={() => setActivePanel(null)} />
       <NavDock activePanel={activePanel} onSelect={setActivePanel} />

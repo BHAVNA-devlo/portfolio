@@ -6,7 +6,7 @@ import { SectionShell } from '../SectionShell';
 
 export function CertificationsSection() {
   return (
-    <SectionShell eyebrow="Verified craft" title="Compact proof points across frontend engineering, motion, and web standards.">
+    <SectionShell eyebrow="Achievements" title="These are some of the achievements that I am proud of.">
       <motion.div variants={stagger} className="flex snap-x gap-4 overflow-x-auto pb-5">
         {certifications.map((certificate) => (
           <motion.a

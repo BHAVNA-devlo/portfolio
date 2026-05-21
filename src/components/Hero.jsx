@@ -5,7 +5,7 @@ import { HeroAvatar } from './HeroAvatar';
 
 export function Hero() {
   return (
-    <main className="relative flex min-h-screen items-center px-5 pb-36 pt-20 md:px-10">
+    <main className="relative z-10 flex min-h-screen items-center px-5 pb-36 pt-20 md:px-10">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-10 md:grid-cols-[1.08fr_.92fr]">
         <motion.div variants={stagger} initial="hidden" animate="visible" className="relative z-10">
           <motion.div variants={fadeUp} className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-xs uppercase tracking-[0.3em] text-mint/80 backdrop-blur-xl">

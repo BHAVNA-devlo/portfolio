@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Bhavna',
   role: 'Web Developer',
-  headline: "Hi, I'm Bhavna",
+  headline: "Hi, I'm Bhavna Singh",
   tagline: 'Building modern digital experiences with code and creativity.',
   intro:
     'I craft responsive, high-performance interfaces that pair precise engineering with atmospheric visual design. My work focuses on clean architecture, expressive motion, and user experiences that feel intentional from the first click.',
@@ -14,8 +14,8 @@ export const profile = {
 };
 
 export const contactLinks = [
-  { label: 'Email', value: 'hello@bhavna.dev', href: 'mailto:hello@bhavna.dev' },
-  { label: 'GitHub', value: 'github.com/bhavna', href: 'https://github.com/' },
-  { label: 'LinkedIn', value: 'linkedin.com/in/bhavna', href: 'https://linkedin.com/' },
+  { label: 'Email', value: 'hello@bhavna.dev', href: 'bhavnasingh2196@gmail.com' },
+  { label: 'GitHub', value: 'github.com/bhavna', href: 'https://github.com/BHAVNA-devlo/' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/bhavna', href: 'https://www.linkedin.com/in/bhavna-singh-45079a2a2/' },
   { label: 'Portfolio', value: 'bhavna.dev', href: 'https://example.com' },
 ];

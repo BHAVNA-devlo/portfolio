@@ -59,7 +59,8 @@ export function AboutSection() {
                 <>
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(243,201,105,.24),transparent_26%),radial-gradient(circle_at_22%_72%,rgba(255,107,61,.18),transparent_30%),linear-gradient(180deg,rgba(255,255,255,.08),rgba(5,5,6,.2)_42%,rgba(5,5,6,.96))]" />
                   <div className="absolute left-1/2 top-10 h-40 w-40 -translate-x-1/2 rounded-full bg-gradient-to-br from-fog via-[#b8a992] to-[#5f5548] shadow-[0_0_64px_rgba(243,201,105,.24)]" />
-                  <div className="absolute left-1/2 top-[11rem] h-[13rem] w-[14rem] -translate-x-1/2 rounded-t-[7rem] bg-gradient-to-b from-[#332b23] via-[#191715] to-[#0d0c0b] shadow-[0_-18px_70px_rgba(255,107,61,.14)]" />
+                  <div className="absolute left-1/2 top-[10.4rem] h-14 w-36 -translate-x-1/2 rounded-[2rem] bg-gradient-to-b from-[#6d5d4b]/75 to-[#1c1815]/45 shadow-[0_0_42px_rgba(243,201,105,.12)]" />
+                  <div className="absolute left-1/2 top-[13.8rem] h-28 w-52 -translate-x-1/2 rounded-t-[4.5rem] bg-gradient-to-b from-[#2a241f]/42 to-transparent" />
                   <div className="absolute left-1/2 top-[5.9rem] h-10 w-28 -translate-x-1/2 rounded-full border border-white/10 bg-void/35 backdrop-blur-md">
                     <span className="absolute left-6 top-3.5 h-2 w-4 rounded-full bg-mint shadow-glow" />
                     <span className="absolute right-6 top-3.5 h-2 w-4 rounded-full bg-acid shadow-acid" />

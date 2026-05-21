@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export function HeroAvatar() {
   return (
     <motion.div
-      className="relative mx-auto h-72 w-72 md:h-[25rem] md:w-[25rem]"
+      className="relative mx-auto h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80"
       animate={{ y: [-10, 14, -10] }}
       transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
       whileHover={{ scale: 1.035, rotate: 1.2 }}

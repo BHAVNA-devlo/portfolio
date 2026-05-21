@@ -7,7 +7,7 @@ export function SectionShell({ eyebrow, title, children }) {
       variants={stagger}
       initial="hidden"
       animate="visible"
-      className="mx-auto w-full max-w-5xl"
+      className="mx-auto w-full max-w-5xl lg:w-[80%] lg:max-w-none"
     >
       <motion.p variants={fadeUp} className="mb-3 text-xs uppercase tracking-[0.42em] text-mint/75">
         {eyebrow}

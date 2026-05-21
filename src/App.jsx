@@ -15,11 +15,11 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = activePanel ? 'hidden' : '';
+    document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [activePanel]);
+  }, []);
 
   return (
     <>

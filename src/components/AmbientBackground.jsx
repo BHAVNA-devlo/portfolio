@@ -31,7 +31,7 @@ export function AmbientBackground() {
         animate={{ x: [0, -70, -20], y: [0, -80, -10], scale: [1, 0.92, 1.12] }}
         transition={{ duration: 18, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
       />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(117,244,200,.055)_1px,transparent_1px),linear-gradient(90deg,rgba(117,244,200,.055)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(circle_at_center,black,transparent_76%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(243,201,105,.06)_1px,transparent_1px),linear-gradient(90deg,rgba(230,225,215,.045)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(circle_at_center,black,transparent_76%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,.18)_1px,transparent_1.6px)] bg-[size:34px_34px] opacity-30 [mask-image:radial-gradient(circle_at_center,black,transparent_82%)]" />
       <motion.div
         className="absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-mint/35 to-transparent"

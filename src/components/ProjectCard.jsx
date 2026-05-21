@@ -13,7 +13,7 @@ export function ProjectCard({ project, featured = false }) {
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(117,244,200,.14),transparent_34%)] opacity-0 transition group-hover:opacity-100" />
       <div className="relative min-h-56 overflow-hidden rounded-2xl border border-white/10 bg-carbon">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(117,244,200,.12),transparent_36%),linear-gradient(45deg,transparent,rgba(200,255,102,.08))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(243,201,105,.13),transparent_36%),linear-gradient(45deg,transparent,rgba(255,107,61,.09))]" />
         <div className="absolute inset-x-6 top-8 h-20 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur" />
         <div className="absolute bottom-8 left-6 right-20 h-24 rounded-2xl border border-mint/20 bg-mint/[0.05]" />
         <motion.div

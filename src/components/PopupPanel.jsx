@@ -39,7 +39,7 @@ export function PopupPanel({ activePanel, onClose }) {
             exit={{ opacity: 0, y: 55, scale: 0.96, filter: 'blur(16px)' }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(117,244,200,.12),transparent_30%),radial-gradient(circle_at_90%_15%,rgba(200,255,102,.08),transparent_24%)]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(243,201,105,.13),transparent_30%),radial-gradient(circle_at_90%_15%,rgba(255,107,61,.09),transparent_24%)]" />
             <div className="relative flex h-full flex-col">
               <header className="flex items-center justify-between border-b border-white/10 px-5 py-4 md:px-8">
                 <div className="flex items-center gap-3">

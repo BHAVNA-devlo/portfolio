@@ -10,15 +10,15 @@
 
 html {
   scroll-behavior: smooth;
-  background: #050807;
+  background: #050506;
 }
 
 body {
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
-  background: #050807;
-  color: #c9d8d0;
+  background: #050506;
+  color: #e6e1d7;
   font-family: Inter, system-ui, sans-serif;
   cursor: none;
 }
@@ -36,7 +36,7 @@ a {
 }
 
 ::selection {
-  background: rgba(117, 244, 200, 0.26);
+  background: rgba(243, 201, 105, 0.26);
   color: #f7fffb;
 }
 
@@ -50,7 +50,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(117, 244, 200, 0.25);
+  background: rgba(243, 201, 105, 0.25);
   border-radius: 999px;
 }
 

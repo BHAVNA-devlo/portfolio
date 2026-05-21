@@ -19,12 +19,7 @@ export function Hero() {
             {profile.tagline}
           </motion.p>
           <motion.div variants={fadeUp} className="mt-10 grid max-w-xl grid-cols-3 gap-3">
-            {profile.metrics.map((metric) => (
-              <div key={metric.label} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4 shadow-insetGlass backdrop-blur-lg">
-                <div className="font-display text-2xl font-semibold text-fog">{metric.value}</div>
-                <div className="mt-1 text-xs uppercase tracking-[0.18em] text-steel">{metric.label}</div>
-              </div>
-            ))}
+           
           </motion.div>
         </motion.div>
         <motion.div initial={{ opacity: 0, scale: 0.88, filter: 'blur(18px)' }} animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }} transition={{ duration: 1.1, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}>

@@ -7,17 +7,18 @@ export const education = [
   'Pursuing B.Tech in Computer Science and Engineering at KIET Group of Institutions, focusing on software development, data structures, web technologies, and modern application design.',
   },
   {
-    period: '2021 - 2022',
+    period: '2020-2021',
     title: '12 standard (Science)',
     institution: 'UP Board',
     detail:
-      'Completed 12th standard with Science stream under UP Board, building a strong foundation in mathematics, logical thinking, and problem-solving skills.',
+     'Completed Intermediate education in the Science stream under UP Board with 85.2%, strengthening analytical thinking, mathematics, and problem-solving skills.'
   },
   {
-    period: '2020 - 2021',
+    period: '20219 - 2020',
     title: '10 standard (Science)',
     institution: 'UP Board',
     detail:
-  'Completed 10th standard while developing analytical thinking, problem-solving abilities, and a strong academic foundation.',
+  'Completed High School under UP Board with 86.33%, building a strong academic foundation in mathematics, science, analytical thinking, and problem-solving.'
+
   },
 ];

@@ -1,6 +1,6 @@
 export const profile = {
-  name: 'Bhavna',
-  role: 'Web Developer',
+  name: 'Bhavna Singh',
+  role: 'Backend Java Developer • AI & ML Enthusiast',
   headline: "Hi, I'm Bhavna Singh",
   tagline: 'Building modern digital experiences with code and creativity.',
   intro:

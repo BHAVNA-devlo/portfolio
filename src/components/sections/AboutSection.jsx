@@ -108,10 +108,10 @@ export function AboutSection() {
                 Overview
               </motion.span>
               <motion.p variants={fadeUp} className="mt-5 text-lg leading-8 text-fog/90 md:text-xl md:leading-9">
-                I am {profile.name}, a frontend developer drawn to interfaces that feel calm, immersive, and intentional. I enjoy turning ideas into modern web applications where clean code, responsive structure, and cinematic motion work together.
+                I am {profile.name}, AI/ML enthusiast and Backend Java Developer passionate about building intelligent and scalable software solutions using Java, Spring Boot, and modern technologies.
               </motion.p>
               <motion.p variants={fadeUp} className="mt-4 leading-7 text-steel">
-                My current journey is a mix of focused learning, hands-on project building, and freelance readiness. I care about futuristic UI, smooth interactions, and experiences that make people feel they are using something thoughtfully made.
+                My current journey is centered on mastering Backend Development and Artificial Intelligence through continuous learning, hands-on projects, and problem-solving. I enjoy building scalable applications with Java and Spring Boot while exploring AI/ML technologies to create intelligent and impactful solutions.
               </motion.p>
               <motion.blockquote
                 variants={fadeUp}

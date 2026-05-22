@@ -19,7 +19,7 @@ export function Hero() {
         <motion.div variants={stagger} initial="hidden" animate="visible" className="order-2 relative z-10 flex flex-col items-center">
           <motion.div variants={fadeUp} className="mb-4 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-xs uppercase tracking-[0.3em] text-mint/80 backdrop-blur-xl">
             <span className="h-2 w-2 rounded-full bg-acid shadow-acid" />
-            {profile.role}
+            {profile.role } 
           </motion.div>
           <motion.h1 variants={fadeUp} className="max-w-4xl font-display text-4xl font-semibold leading-[0.96] text-fog sm:text-6xl lg:text-7xl">
             {profile.headline}

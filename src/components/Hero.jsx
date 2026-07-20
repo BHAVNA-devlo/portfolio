@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Download } from 'lucide-react';
 import { profile } from '../data/profile';
 import { fadeUp, stagger } from '../utils/motion';
 import { HeroAvatar } from './HeroAvatar';
@@ -19,7 +20,7 @@ export function Hero() {
         <motion.div variants={stagger} initial="hidden" animate="visible" className="order-2 relative z-10 flex flex-col items-center">
           <motion.div variants={fadeUp} className="mb-4 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-xs uppercase tracking-[0.3em] text-mint/80 backdrop-blur-xl">
             <span className="h-2 w-2 rounded-full bg-acid shadow-acid" />
-            {profile.role } 
+            {profile.role} 
           </motion.div>
           <motion.h1 variants={fadeUp} className="max-w-4xl font-display text-4xl font-semibold leading-[0.96] text-fog sm:text-6xl lg:text-7xl">
             {profile.headline}
@@ -27,8 +28,17 @@ export function Hero() {
           <motion.p variants={fadeUp} className="mt-5 max-w-2xl text-base leading-7 text-steel md:text-lg">
             {profile.tagline}
           </motion.p>
-          <motion.div variants={fadeUp} className="mt-4 grid max-w-xl grid-cols-3 gap-3">
-           
+          <motion.div variants={fadeUp} className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <motion.a
+              href="/resume.pdf"
+              download="Bhavna-Singh-Resume.pdf"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-5 py-3 text-sm font-semibold text-fog shadow-glow backdrop-blur-xl transition hover:border-mint/55 hover:bg-mint/[0.16] focus:outline-none focus:ring-2 focus:ring-mint/40 focus:ring-offset-2 focus:ring-offset-void"
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
+              Download Resume
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>

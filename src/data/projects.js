@@ -1,6 +1,6 @@
 export const projects = [
   {
-    title: 'Nova Commerce',
+    title: 'Twitter-Sentimental-Analysis -Masters',
     category: 'Featured Build',
     description:
       'A high-conversion storefront with animated product discovery, filtered collections, and a fast mobile checkout flow.',
@@ -10,7 +10,7 @@ export const projects = [
     githubUrl: 'https://github.com/',
   },
   {
-    title: 'Pulse Analytics',
+    title: 'Volunteer Registration',
     category: 'Dashboard',
     description:
       'A compact analytics workspace with live KPI cards, clean visual hierarchy, and frictionless reporting interactions.',
@@ -20,7 +20,7 @@ export const projects = [
     githubUrl: 'https://github.com/',
   },
   {
-    title: 'Orbit Studio',
+    title: 'Task Tracker',
     category: 'Creative Tool',
     description:
       'An immersive landing and booking experience for a digital studio, tuned for motion, accessibility, and speed.',

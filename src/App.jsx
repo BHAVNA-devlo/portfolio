@@ -166,37 +166,37 @@ export default function App() {
 
         {/* Section Wrapper grids */}
         <div id="skills" className="relative py-16 md:py-24 border-b border-white/5 scroll-mt-12 md:scroll-mt-16">
-          <div className="mx-auto max-w-5xl px-5">
+          <div className="mx-auto max-w-6xl px-6 md:px-10">
             <SkillsSection />
           </div>
         </div>
 
         <div id="projects" className="relative py-16 md:py-24 border-b border-white/5 scroll-mt-12 md:scroll-mt-16">
-          <div className="mx-auto max-w-5xl px-5">
+          <div className="mx-auto max-w-6xl px-6 md:px-10">
             <ProjectsSection />
           </div>
         </div>
 
         <div id="education" className="relative py-16 md:py-24 border-b border-white/5 scroll-mt-12 md:scroll-mt-16">
-          <div className="mx-auto max-w-5xl px-5">
+          <div className="mx-auto max-w-6xl px-6 md:px-10">
             <EducationSection />
           </div>
         </div>
 
         <div id="certifications" className="relative py-16 md:py-24 border-b border-white/5 scroll-mt-12 md:scroll-mt-16">
-          <div className="mx-auto max-w-5xl px-5">
+          <div className="mx-auto max-w-6xl px-6 md:px-10">
             <AchievementsSection />
           </div>
         </div>
 
         <div id="about" className="relative py-16 md:py-24 border-b border-white/5 scroll-mt-12 md:scroll-mt-16">
-          <div className="mx-auto max-w-5xl px-5">
+          <div className="mx-auto max-w-6xl px-6 md:px-10">
             <AboutSection />
           </div>
         </div>
 
         <div id="contact" className="relative py-16 md:py-24 scroll-mt-12 md:scroll-mt-16">
-          <div className="mx-auto max-w-5xl px-5">
+          <div className="mx-auto max-w-6xl px-6 md:px-10">
             <ContactSection />
           </div>
         </div>

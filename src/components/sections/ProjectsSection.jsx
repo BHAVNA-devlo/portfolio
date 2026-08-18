@@ -179,9 +179,8 @@ function ProjectRow({ project, index }) {
 export function ProjectsSection() {
   return (
     <section className="py-8">
-      {/* Section Eyebrow Header (Index Blue, Title Ivory) */}
+      {/* Section Eyebrow Header (Title Ivory) */}
       <div className="mb-16 text-left select-none">
-        <span className="font-display text-4xl font-extrabold text-mint block mb-1">03</span>
         <h2 className="font-display text-xl font-bold uppercase tracking-[0.2em] text-fog">
           SELECTED WORK
         </h2>

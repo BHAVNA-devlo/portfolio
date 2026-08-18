@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="relative mt-24 border-t border-white/5 bg-void pb-16 pt-12 text-left">
-      <div className="mx-auto max-w-5xl px-6 md:px-10">
+      <div className="mx-auto max-w-6xl px-6 md:px-10">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           {/* Brand/Signature */}
           <div>

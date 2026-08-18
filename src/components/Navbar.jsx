@@ -47,7 +47,7 @@ export function Navbar({ activeSection }) {
           : 'bg-transparent py-6'
       }`}
     >
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-6 md:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 md:px-10">
         {/* Brand Name */}
         <a
           href="#"

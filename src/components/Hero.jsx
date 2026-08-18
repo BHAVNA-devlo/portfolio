@@ -52,7 +52,7 @@ export function Hero() {
     <section
       ref={containerRef}
       id="hero"
-      className="relative z-10 flex min-h-screen w-full flex-col justify-between px-6 pb-12 pt-36 md:px-12 md:pb-16 md:pt-44 select-none"
+      className="relative z-10 flex min-h-screen w-full flex-col justify-between mx-auto max-w-6xl px-6 pb-12 pt-36 md:pb-16 md:pt-44 select-none"
     >
       {/* Editorial Decorative Top Label */}
       <div className="flex justify-between items-center border-b border-white/5 pb-2 text-[10px] uppercase tracking-[0.25em] text-steel">
@@ -61,7 +61,7 @@ export function Hero() {
       </div>
 
       {/* Main Typography Block */}
-      <div className="my-auto flex flex-col justify-center text-left max-w-5xl">
+      <div className="my-auto flex flex-col justify-center text-left max-w-6xl">
         {/* Name Row 1: BHAVNA (Warm Ivory) */}
         <div className="overflow-hidden">
           <h1 className="hero-title-line font-display text-[14vw] font-black leading-[0.8] tracking-tighter text-fog uppercase sm:text-[11vw] md:text-[9vw] lg:text-[8.5vw]">

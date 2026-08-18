@@ -1,47 +1,106 @@
-import { motion } from 'framer-motion';
-import { Download } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
 import { profile } from '../data/profile';
-import { fadeUp, stagger } from '../utils/motion';
-import { HeroAvatar } from './HeroAvatar';
+import gsap from 'gsap';
 
 export function Hero() {
-  return (
-    <main className="relative z-10 flex h-screen overflow-hidden px-5 pb-28 pt-8 md:px-10 md:pb-32 md:pt-10">
-      <div className="mx-auto flex h-full w-full max-w-5xl flex-col items-center justify-center gap-4 text-center sm:gap-5 md:gap-6">
-        <motion.div
-          className="order-1"
-          initial={{ opacity: 0, scale: 0.88, filter: 'blur(18px)' }}
-          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <HeroAvatar />
-        </motion.div>
+  const containerRef = useRef(null);
 
-        <motion.div variants={stagger} initial="hidden" animate="visible" className="order-2 relative z-10 flex flex-col items-center">
-          <motion.div variants={fadeUp} className="mb-4 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-xs uppercase tracking-[0.3em] text-mint/80 backdrop-blur-xl">
-            <span className="h-2 w-2 rounded-full bg-acid shadow-acid" />
-            {profile.role} 
-          </motion.div>
-          <motion.h1 variants={fadeUp} className="max-w-4xl font-display text-4xl font-semibold leading-[0.96] text-fog sm:text-6xl lg:text-7xl">
-            {profile.headline}
-          </motion.h1>
-          <motion.p variants={fadeUp} className="mt-5 max-w-2xl text-base leading-7 text-steel md:text-lg">
-            {profile.tagline}
-          </motion.p>
-          <motion.div variants={fadeUp} className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <motion.a
-              href="/resume.pdf"
-              download="Bhavna-Singh-Resume.pdf"
-              whileHover={{ y: -2, scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-mint/30 bg-mint/10 px-5 py-3 text-sm font-semibold text-fog shadow-glow backdrop-blur-xl transition hover:border-mint/55 hover:bg-mint/[0.16] focus:outline-none focus:ring-2 focus:ring-mint/40 focus:ring-offset-2 focus:ring-offset-void"
-            >
-              <Download className="h-4 w-4" aria-hidden="true" />
-              Download Resume
-            </motion.a>
-          </motion.div>
-        </motion.div>
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.6 } });
+
+      tl.fromTo(
+        '.hero-title-line',
+        { y: '100%', opacity: 0 },
+        { y: '0%', opacity: 1, stagger: 0.2, delay: 0.4 }
+      );
+
+      tl.fromTo(
+        '.hero-role',
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.15 },
+        '-=1.0'
+      );
+
+      tl.fromTo(
+        '.hero-tagline',
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1 },
+        '-=1.2'
+      );
+
+      tl.fromTo(
+        '.scroll-indicator',
+        { opacity: 0, y: -10 },
+        { opacity: 0.6, y: 0, duration: 1 },
+        '-=0.8'
+      );
+
+      gsap.to('.scroll-arrow', {
+        y: 6,
+        repeat: -1,
+        yoyo: true,
+        ease: 'power1.inOut',
+        duration: 1.2,
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      ref={containerRef}
+      id="hero"
+      className="relative z-10 flex min-h-screen w-full flex-col justify-between px-6 pb-12 pt-36 md:px-12 md:pb-16 md:pt-44 select-none"
+    >
+      {/* Editorial Decorative Top Label */}
+      <div className="flex justify-between items-center border-b border-white/5 pb-2 text-[10px] uppercase tracking-[0.25em] text-steel">
+        <span>Portfolio Redesign / {new Date().getFullYear()}</span>
+        <span>Scroll to Explore</span>
       </div>
-    </main>
+
+      {/* Main Typography Block */}
+      <div className="my-auto flex flex-col justify-center text-left max-w-5xl">
+        {/* Name Row 1: BHAVNA (Warm Ivory) */}
+        <div className="overflow-hidden">
+          <h1 className="hero-title-line font-display text-[14vw] font-black leading-[0.8] tracking-tighter text-fog uppercase sm:text-[11vw] md:text-[9vw] lg:text-[8.5vw]">
+            {profile.name.split(' ')[0]}
+          </h1>
+        </div>
+        
+        {/* Name Row 2: SINGH (Cobalt/Sophisticated Blue) */}
+        <div className="overflow-hidden mb-6 sm:mb-8">
+          <h1 className="hero-title-line font-display text-[14vw] font-light leading-[0.8] tracking-tighter text-mint uppercase sm:text-[11vw] md:text-[9vw] lg:text-[8.5vw]">
+            {profile.name.split(' ')[1] || 'SINGH'}
+          </h1>
+        </div>
+
+        {/* Roles */}
+        <div className="flex flex-col gap-1.5 md:flex-row md:gap-8 mb-8 sm:mb-12">
+          <div className="hero-role text-xs uppercase tracking-[0.25em] font-bold text-steel sm:text-sm">
+            BACKEND DEVELOPER
+          </div>
+          <div className="hero-role text-xs uppercase tracking-[0.25em] font-bold text-steel sm:text-sm">
+            <span className="text-mint">AI / ML</span> ENTHUSIAST
+          </div>
+        </div>
+
+        {/* Tagline */}
+        <div className="max-w-3xl">
+          <p className="hero-tagline font-display text-2xl font-bold leading-[1.1] text-fog tracking-tight uppercase opacity-0 sm:text-3xl lg:text-4xl">
+            BUILDING <span className="text-mint font-black">DIGITAL EXPERIENCES</span> WITH CODE.
+          </p>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="scroll-indicator flex flex-col items-center text-center opacity-0">
+        <span className="text-[9px] uppercase tracking-[0.3em] text-steel">
+          Scroll to explore
+        </span>
+        <span className="scroll-arrow mt-2 text-sm text-mint">↓</span>
+      </div>
+    </section>
   );
 }

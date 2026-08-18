@@ -1,25 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* Dark mode is the default theme */
+  --color-void: 7 9 13; /* #07090D - deep dark warm black/blue background */
+  --color-graphite: 13 17 23; /* #0D1117 - secondary dark */
+  --color-carbon: 17 22 29; /* #11161D - card surfaces */
+  --color-glass: 13 17 23;
+  --color-mint: 59 130 246; /* #3B82F6 - sophisticated cobalt/electric blue */
+  --color-acid: 96 165 250; /* #60A5FA - stronger highlight blue */
+  --color-purple: 59 130 246; /* unified to blue */
+  --color-steel: 156 163 175; /* #9CA3AF - muted neutral gray body text */
+  --color-fog: 241 240 234; /* #F1F0EA - warm off-white/ivory contrast color */
+  --color-metadata: 107 114 128; /* #6B7280 - subtle text */
+  --glass-border-opacity: 0.05;
+  --scrollbar-thumb: rgba(59, 130, 246, 0.25);
+  --selection-bg: rgba(59, 130, 246, 0.15);
+  --selection-color: #f1f0ea;
+}
+
+html.light {
+  /* Adapted keeping dark-blue theme default */
+  --color-void: 7 9 13;
+  --color-graphite: 13 17 23;
+  --color-carbon: 17 22 29;
+  --color-glass: 13 17 23;
+  --color-mint: 59 130 246;
+  --color-acid: 96 165 250;
+  --color-purple: 59 130 246;
+  --color-steel: 156 163 175;
+  --color-fog: 241 240 234;
+  --color-metadata: 107 114 128;
+  --glass-border-opacity: 0.05;
+  --scrollbar-thumb: rgba(59, 130, 246, 0.25);
+  --selection-bg: rgba(59, 130, 246, 0.15);
+  --selection-color: #f1f0ea;
+}
+
+html.lenis, html.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-  background: #050506;
+  background: rgb(var(--color-void));
 }
 
 body {
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
-  background: #050506;
-  color: #e6e1d7;
+  background: rgb(var(--color-void));
+  color: rgb(var(--color-fog));
   font-family: Inter, system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button,
@@ -30,20 +82,40 @@ textarea {
 }
 
 ::selection {
-  background: rgba(243, 201, 105, 0.26);
-  color: #f7fffb;
+  background: var(--selection-bg);
+  color: var(--selection-color);
 }
 
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(var(--color-graphite) / 0.5);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(243, 201, 105, 0.25);
+  background: var(--scrollbar-thumb);
   border-radius: 999px;
+  border: 2px solid rgb(var(--color-void));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-acid) / 0.4);
+}
+
+/* Glassmorphism utility helpers */
+.glass-panel {
+  background-color: rgba(var(--color-graphite) / 0.65);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(var(--color-fog) / var(--glass-border-opacity));
+}
+
+/* Dynamic background noise fallback */
+.ambient-noise {
+  background-image: radial-gradient(circle at 20% 10%, rgba(var(--color-mint) / 0.13), transparent 32%),
+                    radial-gradient(circle at 78% 30%, rgba(var(--color-acid) / 0.10), transparent 28%),
+                    radial-gradient(circle at 50% 95%, rgba(var(--color-fog) / 0.08), transparent 34%);
 }

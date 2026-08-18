@@ -1,129 +1,175 @@
-import { motion } from 'framer-motion';
-import { Code2, Layers3, Rocket, Sparkles } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
 import { profile } from '../../data/profile';
-import { fadeUp, stagger } from '../../utils/motion';
-import { SectionShell } from '../SectionShell';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const fullName = profile.name.includes(' ') ? profile.name : `${profile.name} Singh`;
-const photoSrc = profile.photo || profile.image;
-
-const techStack = ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion', 'Responsive UI', 'Web Apps'];
-
-const highlights = [
-  {
-    icon: Code2,
-    title: 'Frontend Craft',
-    text: 'Clean component systems, sharp layouts, and interfaces that feel effortless to use.',
-  },
-  {
-    icon: Layers3,
-    title: 'Visual Direction',
-    text: 'Futuristic UI, soft motion, and atmospheric details without losing clarity.',
-  },
-  {
-    icon: Rocket,
-    title: 'Builder Mindset',
-    text: 'Freelance-ready, constantly learning, and focused on shipping polished web experiences.',
-  },
-];
-
-const stats = [
-  { value: '12+', label: 'Projects Built' },
-  { value: '18+', label: 'Technologies Learned' },
-  { value: '100%', label: 'Freelance Ready' },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export function AboutSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Heading reveal on scroll
+      gsap.fromTo(
+        '.about-reveal-header',
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.about-header-trigger',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+
+      // Paragraphs staggered fade-in
+      gsap.fromTo(
+        '.about-reveal-p',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: 'power2.out',
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: '.about-paragraphs-trigger',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+
+      // Floating badges subtle hover/float animation
+      gsap.fromTo(
+        '.about-float-badge',
+        { y: 0 },
+        {
+          y: -6,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          duration: 3,
+          stagger: {
+            each: 0.4,
+            from: 'random',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <SectionShell eyebrow="Presence layer" title="A personal interface for code, motion, and modern web craft.">
-      <motion.div variants={stagger} className="grid items-start gap-8 lg:grid-cols-[0.92fr_1.08fr]">
-        <motion.div
-          variants={fadeUp}
-          className="relative mx-auto w-full max-w-[26rem] lg:mx-0 lg:max-w-none"
-        >
-          <motion.div
-            className="group relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/15 bg-carbon shadow-[0_28px_90px_rgba(0,0,0,0.42)]"
-            animate={{ y: [-8, 10, -8] }}
-            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-            whileHover={{ scale: 1.018, rotate: -0.6 }}
-          >
-            <div className="absolute -inset-px rounded-[2rem] bg-[linear-gradient(135deg,rgba(243,201,105,.42),rgba(255,255,255,.08)_36%,rgba(255,107,61,.24))] opacity-70" />
-            <div className="absolute inset-[1px] overflow-hidden rounded-[1.95rem] bg-void">
-              {photoSrc ? (
-                <img
-                  src={photoSrc}
-                  alt={`${fullName} professional portrait`}
-                  className="absolute inset-0 h-full w-full object-cover object-center saturate-[.92] transition duration-700 group-hover:scale-105"
-                />
-              ) : (
-                <>
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(243,201,105,.24),transparent_26%),radial-gradient(circle_at_22%_72%,rgba(255,107,61,.18),transparent_30%),linear-gradient(180deg,rgba(255,255,255,.08),rgba(5,5,6,.2)_42%,rgba(5,5,6,.96))]" />
-                  <div className="absolute left-1/2 top-10 h-40 w-40 -translate-x-1/2 rounded-full bg-gradient-to-br from-fog via-[#b8a992] to-[#5f5548] shadow-[0_0_64px_rgba(243,201,105,.24)]" />
-                  <div className="absolute left-1/2 top-[10.4rem] h-14 w-36 -translate-x-1/2 rounded-[2rem] bg-gradient-to-b from-[#6d5d4b]/75 to-[#1c1815]/45 shadow-[0_0_42px_rgba(243,201,105,.12)]" />
-                  <div className="absolute left-1/2 top-[13.8rem] h-28 w-52 -translate-x-1/2 rounded-t-[4.5rem] bg-gradient-to-b from-[#2a241f]/42 to-transparent" />
-                  <div className="absolute left-1/2 top-[5.9rem] h-10 w-28 -translate-x-1/2 rounded-full border border-white/10 bg-void/35 backdrop-blur-md">
-                    <span className="absolute left-6 top-3.5 h-2 w-4 rounded-full bg-mint shadow-glow" />
-                    <span className="absolute right-6 top-3.5 h-2 w-4 rounded-full bg-acid shadow-acid" />
-                  </div>
-                </>
-              )}
-              <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_48%,rgba(5,5,6,.52)_72%,rgba(5,5,6,.95))]" />
-              <motion.div
-                className="absolute left-7 top-8 h-px w-28 bg-gradient-to-r from-transparent via-mint to-transparent"
-                animate={{ x: [0, 190, 0], opacity: [0, 1, 0] }}
-                transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <motion.div
-                className="absolute bottom-28 right-5 h-px w-24 bg-gradient-to-r from-transparent via-acid to-transparent"
-                animate={{ x: [0, -170, 0], opacity: [0, 1, 0] }}
-                transition={{ duration: 5.1, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-void via-void/82 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-                <div>
-                  <p className="font-display text-2xl font-semibold text-fog">{fullName}</p>
+    <section ref={sectionRef} className="py-8">
+      {/* Section Eyebrow Header (Number Blue, Title Ivory) */}
+      <div className="mb-12 text-left select-none">
+        <span className="font-display text-4xl font-extrabold text-mint block mb-1">06</span>
+        <h2 className="font-display text-xl font-bold uppercase tracking-[0.2em] text-fog">
+          ABOUT ME
+        </h2>
+        <div className="h-px w-full bg-white/5 mt-4" />
+      </div>
+
+      <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center text-left">
+        {/* Left Column: Bold Headline & Detailed Copy */}
+        <div className="space-y-8">
+          <div className="about-header-trigger overflow-hidden">
+            <h3 className="about-reveal-header font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-fog uppercase sm:text-4xl md:text-5xl">
+              I don't just write code. <span className="text-mint">I build robust architectures and intelligent systems.</span>
+            </h3>
+          </div>
+
+          <div className="about-paragraphs-trigger space-y-6 text-sm leading-relaxed text-steel max-w-xl">
+            <p className="about-reveal-p">
+              I am a <span className="text-mint font-semibold">Computer Science</span> student at <span className="text-mint font-semibold">KIET Group of Institutions</span> who believes that the best way to learn is by doing. Rather than just studying theory, I spend my time actively developing my skills by building real, functional projects.
+            </p>
+            
+            <p className="about-reveal-p">
+              I enjoy taking an idea from concept to reality—designing clean interfaces, developing robust functionality, and adding thoughtful interactions to make the final product feel polished and professional. It's the micro-interactions, like a smooth <span className="text-mint font-semibold">GSAP</span> reveal or a responsive UI shift, that transform a basic site into an experience.
+            </p>
+
+            <p className="about-reveal-p">
+              My technical journey is driven by curiosity and problem-solving. I am continuously exploring modern backend patterns in <span className="text-mint font-semibold">Java</span> and <span className="text-mint font-semibold">Spring Boot</span>, <span className="text-mint font-semibold">Machine Learning</span> foundations, and <span className="text-mint font-semibold">React</span> full-stack integrations to develop intelligent systems.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Column: Architectural Graphic Card & Floating Badges */}
+        <div className="relative flex justify-center items-center py-8">
+          <div className="relative w-full max-w-[280px] sm:max-w-[320px]">
+            {/* Floating Badges (Outlined Blue/Gray) */}
+            <div className="about-float-badge absolute top-[10%] -left-8 z-20 border border-mint/20 bg-void/90 px-3 py-1.5 text-[9px] uppercase tracking-widest text-mint font-bold shadow-md rounded-md select-none">
+              CSE STUDENT
+            </div>
+
+            <div className="about-float-badge absolute -top-4 right-4 sm:-right-4 z-20 border border-white/10 bg-void/90 px-3 py-1.5 text-[9px] uppercase tracking-widest text-steel font-semibold shadow-md rounded-md select-none">
+              2027 GRADUATE
+            </div>
+
+            <div className="about-float-badge absolute top-[40%] -right-8 z-20 border border-mint/20 bg-void/90 px-3 py-1.5 text-[9px] uppercase tracking-widest text-mint font-bold shadow-md rounded-md select-none">
+              BACKEND DEV
+            </div>
+
+            <div className="about-float-badge absolute bottom-[25%] -left-10 z-20 border border-mint/20 bg-void/90 px-3 py-1.5 text-[9px] uppercase tracking-widest text-mint font-semibold shadow-md rounded-md select-none">
+              JAVA & SPRING
+            </div>
+
+            <div className="about-float-badge absolute bottom-[8%] -right-4 z-20 border border-white/10 bg-void/90 px-3 py-1.5 text-[9px] uppercase tracking-widest text-steel font-semibold shadow-md rounded-md select-none">
+              AI & ML
+            </div>
+
+            {/* Styled Portrait Container stand-in (Abstract System Graphic) */}
+            <div className="relative aspect-[3/4] w-full bg-white/[0.01] border border-white/5 rounded-2xl overflow-hidden flex flex-col justify-center items-center p-6 shadow-2xl">
+              {/* Radial gradient backing */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.04),transparent_70%)]" />
+              
+              {/* System Architecture Node Graphic */}
+              <svg viewBox="0 0 100 100" fill="none" className="w-36 h-36 text-mint/20 stroke-current stroke-[0.75]">
+                {/* Rotating Rings */}
+                <circle cx="50" cy="50" r="32" className="animate-[spin_60s_linear_infinite]" strokeDasharray="3 3" />
+                <circle cx="50" cy="50" r="18" className="animate-[spin_30s_linear_infinite_reverse]" strokeDasharray="2 2" />
+                
+                {/* Grid Overlay */}
+                <line x1="50" y1="5" x2="50" y2="95" opacity="0.25" strokeDasharray="1 1" />
+                <line x1="5" y1="50" x2="95" y2="50" opacity="0.25" strokeDasharray="1 1" />
+                <line x1="18.2" y1="18.2" x2="81.8" y2="81.8" opacity="0.15" />
+                
+                {/* Central System Hub Node */}
+                <circle cx="50" cy="50" r="5" fill="currentColor" className="text-mint" />
+                
+                {/* Peripheral Nodes */}
+                <circle cx="50" cy="18" r="3" fill="currentColor" className="text-acid" />
+                <circle cx="50" cy="82" r="3" fill="currentColor" className="text-acid" />
+                <circle cx="18" cy="50" r="3" fill="currentColor" className="text-mint/60" />
+                <circle cx="82" cy="50" r="3" fill="currentColor" className="text-mint/60" />
+                
+                {/* Pulsing connections */}
+                <circle cx="50" cy="18" r="6" stroke="currentColor" className="text-acid/30 animate-ping" />
+                <circle cx="82" cy="50" r="6" stroke="currentColor" className="text-mint/30 animate-ping" />
+              </svg>
+              
+              {/* Micro Console overlay */}
+              <div className="absolute bottom-4 left-4 right-4 bg-void/80 border border-white/5 rounded-lg p-3 font-mono text-[9px] text-steel">
+                <div className="text-mint flex justify-between">
+                  <span>sys.profile</span>
+                  <span>bhavna_singh</span>
                 </div>
-                <Sparkles className="h-5 w-5 text-acid" aria-hidden="true" />
+                <div className="mt-1 font-sans text-[10px] text-fog/85">
+                  KIET CSE (AI/ML)
+                </div>
               </div>
             </div>
-          </motion.div>
-          <div className="absolute -left-8 top-12 h-36 w-36 rounded-full bg-mint/12 blur-3xl" />
-          <div className="absolute -bottom-8 -right-8 h-44 w-44 rounded-full bg-acid/12 blur-3xl" />
-        </motion.div>
 
-        <motion.div variants={stagger} className="space-y-5">
-          <motion.div
-            variants={fadeUp}
-            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-insetGlass backdrop-blur-xl md:p-8"
-          >
-            <div className="absolute right-0 top-0 h-40 w-40 translate-x-10 -translate-y-16 rounded-full bg-mint/10 blur-3xl" />
-            <div className="absolute bottom-0 left-10 h-24 w-36 translate-y-12 rounded-full bg-acid/10 blur-3xl" />
-            <div className="relative">
-              <motion.span
-                variants={fadeUp}
-                className="inline-flex items-center gap-2 rounded-full border border-mint/20 bg-mint/[0.06] px-3 py-1 text-xs uppercase tracking-[0.24em] text-mint/85"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-acid shadow-acid" />
-                Overview
-              </motion.span>
-              <motion.p variants={fadeUp} className="mt-5 text-lg leading-8 text-fog/90 md:text-xl md:leading-9">
-                I am {profile.name}, AI/ML enthusiast and Backend Java Developer passionate about building intelligent and scalable software solutions using Java, Spring Boot, and modern technologies.
-              </motion.p>
-              <motion.p variants={fadeUp} className="mt-4 leading-7 text-steel">
-                My current journey is centered on mastering Backend Development and Artificial Intelligence through continuous learning, hands-on projects, and problem-solving. I enjoy building scalable applications with Java and Spring Boot while exploring AI/ML technologies to create intelligent and impactful solutions.
-              </motion.p>
-              <motion.blockquote
-                variants={fadeUp}
-                className="mt-6 border-l border-acid/50 pl-5 font-display text-xl font-semibold leading-8 text-fog"
-              >
-                "Design the feeling first. Then make the code disappear."
-              </motion.blockquote>
-            </div>
-          </motion.div>
-
-          
-</motion.div>
-      </motion.div>
-    </SectionShell>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

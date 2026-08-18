@@ -1,37 +1,97 @@
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
 import { education } from '../../data/education';
-import { fadeUp } from '../../utils/motion';
-import { SectionShell } from '../SectionShell';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function EducationSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Reveal each block stagger style on scroll
+      gsap.fromTo(
+        '.edu-item',
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: 'power3.out',
+          stagger: 0.2,
+          scrollTrigger: {
+            trigger: '.edu-list',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <SectionShell eyebrow="Learning path" title="A timeline built around engineering fundamentals and interface craft.">
-      <div className="relative ml-2 space-y-5 md:ml-8">
-        <motion.div
-          className="absolute left-4 top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-mint via-acid to-transparent"
-          initial={{ scaleY: 0, originY: 0 }}
-          animate={{ scaleY: 1 }}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-        />
+    <section ref={sectionRef} className="py-8">
+      {/* Section Eyebrow Header (Index Blue, Title Ivory) */}
+      <div className="mb-12 text-left select-none">
+        <span className="font-display text-4xl font-extrabold text-mint block mb-1">04</span>
+        <h2 className="font-display text-xl font-bold uppercase tracking-[0.2em] text-fog">
+          EDUCATION
+        </h2>
+        <div className="h-px w-full bg-white/5 mt-4" />
+      </div>
+
+      {/* Typographic Education List */}
+      <div className="edu-list divide-y divide-white/5 text-left">
         {education.map((item, index) => (
-          <motion.article
-            key={item.title}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: index * 0.08 }}
-            className="relative grid gap-4 pl-12 md:grid-cols-[10rem_1fr]"
+          <div
+            key={index}
+            className="edu-item py-8 first:pt-0 last:pb-0 grid gap-6 md:grid-cols-[200px_1fr] items-baseline"
           >
-            <span className="absolute left-[0.72rem] top-2 h-3 w-3 rounded-full border border-mint bg-void shadow-glow" />
-            <div className="text-sm uppercase tracking-[0.24em] text-mint/75">{item.period}</div>
-            <div className="rounded-3xl border border-white/10 bg-white/[0.035] p-5 shadow-insetGlass">
-              <h3 className="font-display text-2xl font-semibold text-fog">{item.title}</h3>
-              <p className="mt-1 text-sm uppercase tracking-[0.2em] text-steel">{item.institution}</p>
-              <p className="mt-4 leading-7 text-fog/74">{item.detail}</p>
+            {/* Period & Score */}
+            <div className="space-y-1">
+              <span className="text-xs uppercase tracking-[0.2em] text-mint block font-medium">
+                {item.period}
+              </span>
+              <span className="text-[11px] uppercase tracking-[0.1em] text-steel block">
+                {item.score}
+              </span>
             </div>
-          </motion.article>
+
+            {/* Institution & Details */}
+            <div className="space-y-4 max-w-3xl">
+              <div>
+                <h3 className="font-display text-xl font-bold text-fog uppercase tracking-wide sm:text-2xl">
+                  {item.title}
+                </h3>
+                <span className="text-xs uppercase tracking-[0.2em] text-steel font-bold mt-1 block">
+                  {item.institution}
+                </span>
+              </div>
+
+              <p className="text-sm leading-relaxed text-steel">
+                {item.detail}
+              </p>
+
+              {/* Coursework Pills */}
+              {item.coursework && (
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {item.coursework.map((course, cIdx) => (
+                    <span
+                      key={cIdx}
+                      className="border border-white/5 bg-white/[0.01] px-2.5 py-0.5 text-[9px] uppercase tracking-wider text-steel"
+                    >
+                      {course}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         ))}
       </div>
-    </SectionShell>
+    </section>
   );
 }

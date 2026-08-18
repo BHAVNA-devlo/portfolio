@@ -1,93 +1,91 @@
-import { motion } from 'framer-motion';
-import { Braces, Cpu, Gauge, Layers3 } from 'lucide-react';
-import { skills } from '../../data/skills';
-import { fadeUp, stagger } from '../../utils/motion';
-import { SectionShell } from '../SectionShell';
+import React, { useEffect, useRef } from 'react';
+import { skillCategories } from '../../data/skills';
+import { getTechIcon } from '../TechIcons';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const skillNotes = [
-  {
-    icon: Braces,
-    title: 'Frontend Logic',
-    text: 'React, JavaScript, and component thinking for clean, scalable interfaces.',
-  },
-  {
-    icon: Layers3,
-    title: 'Interface Systems',
-    text: 'Responsive layouts, Tailwind styling, and reusable UI patterns.',
-  },
-  {
-    icon: Gauge,
-    title: 'Experience Quality',
-    text: 'Motion, performance, and polish that make products feel smooth.',
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 export function SkillsSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Row by row staggered fade-in + slide-up reveal for the category blocks
+      gsap.fromTo(
+        '.skill-category-box',
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.4,
+          ease: 'power3.out',
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: '.skills-grid',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <SectionShell eyebrow="Skill system" title="The tools and craft behind the interface.">
-      <motion.div variants={stagger} className="grid gap-6 lg:grid-cols-[0.78fr_1.22fr]">
-        <motion.div
-          variants={fadeUp}
-          className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-insetGlass backdrop-blur-xl"
-        >
-          <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-mint/10 blur-3xl" />
-          <div className="absolute -bottom-14 left-8 h-40 w-40 rounded-full bg-acid/10 blur-3xl" />
-          <div className="relative">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-mint/20 bg-mint/[0.07] text-mint shadow-glow">
-              <Cpu className="h-6 w-6" aria-hidden="true" />
-            </div>
-            <p className="mt-6 text-lg leading-8 text-fog/90">
-              My skill set is centered on building modern frontend experiences: structured React components, expressive styling, smooth animation, and responsive product interfaces.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-steel">
-              I keep learning through real builds, sharpening both the visual layer and the engineering habits behind it.
-            </p>
-          </div>
-        </motion.div>
+    <section ref={sectionRef} className="py-8">
+      {/* Section Eyebrow Header (Index Blue, Title Ivory) */}
+      <div className="mb-12 text-left select-none">
+        <span className="font-display text-4xl font-extrabold text-mint block mb-1">01</span>
+        <h2 className="font-display text-xl font-bold uppercase tracking-[0.2em] text-fog">
+          SKILLS & TECHNOLOGIES
+        </h2>
+        <div className="h-px w-full bg-white/5 mt-4" />
+      </div>
 
-        <motion.div variants={stagger} className="grid gap-3 sm:grid-cols-2">
-          {skills.map((skill) => (
-            <motion.article
-              key={skill.name}
-              variants={fadeUp}
-              whileHover={{ y: -5 }}
-              className="group rounded-2xl border border-white/10 bg-white/[0.035] p-4 shadow-insetGlass backdrop-blur-md transition duration-300 hover:border-mint/25 hover:bg-mint/[0.045]"
-            >
-              <div className="mb-4 flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="font-display text-lg font-semibold text-fog">{skill.name}</h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.22em] text-steel">{skill.type}</p>
-                </div>
-                <span className="rounded-full border border-acid/20 bg-acid/[0.07] px-3 py-1 text-xs font-semibold text-acid">
-                  {skill.level}%
-                </span>
-              </div>
-              <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
-                <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-mint via-[#f0a85b] to-acid"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.level}%` }}
-                  transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                />
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      <motion.div variants={stagger} className="mt-6 grid gap-3 md:grid-cols-3">
-        {skillNotes.map(({ icon: Icon, title, text }) => (
-          <motion.article
-            key={title}
-            variants={fadeUp}
-            className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 shadow-insetGlass backdrop-blur-md"
+      {/* Grid containing grouped skill category cards */}
+      <div className="skills-grid grid gap-6 md:grid-cols-2 text-left">
+        {skillCategories.map((category, index) => (
+          <div
+            key={category.id}
+            className="skill-category-box rounded-[2rem] border border-white/5 bg-white/[0.01] p-6 sm:p-8"
           >
-            <Icon className="mb-4 h-5 w-5 text-mint" aria-hidden="true" />
-            <h3 className="font-display text-base font-semibold text-fog">{title}</h3>
-            <p className="mt-2 text-sm leading-6 text-steel">{text}</p>
-          </motion.article>
+            {/* Category Heading with Index */}
+            <div className="flex items-center gap-3 border-b border-white/5 pb-4 mb-6">
+              <span className="text-[10px] uppercase font-mono tracking-widest text-mint/60">
+                {(index + 1).toString().padStart(2, '0')}
+              </span>
+              <h3 className="font-display text-base font-semibold uppercase tracking-[0.2em] text-mint">
+                {category.title}
+              </h3>
+            </div>
+
+            {/* Grid of Skill capsules */}
+            <div className="grid grid-cols-1 min-[380px]:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {category.skills.map((skill) => {
+                const IconComponent = getTechIcon(skill.name);
+                return (
+                  <div
+                    key={skill.name}
+                    className="group flex items-center gap-3.5 rounded-xl border border-white/5 bg-void/50 p-2.5 transition-all duration-300 hover:border-mint/20 hover:bg-white/[0.02] hover:translate-x-1"
+                  >
+                    {/* Icon turns Blue on hover */}
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/[0.03] text-steel group-hover:bg-mint/10 group-hover:text-mint transition-colors">
+                      <IconComponent className="h-4.5 w-4.5" />
+                    </div>
+                    {/* Text transitions from gray to blue on hover */}
+                    <span className="text-xs uppercase tracking-wider text-steel group-hover:text-mint transition-colors duration-300 font-bold relative">
+                      {skill.name}
+                      <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-mint group-hover:w-full transition-all duration-300" />
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         ))}
-      </motion.div>
-    </SectionShell>
+      </div>
+    </section>
   );
 }
